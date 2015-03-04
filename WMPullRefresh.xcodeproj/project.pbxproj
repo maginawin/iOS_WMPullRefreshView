@@ -15,6 +15,7 @@
 		08667A691AA767EB005353AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08667A681AA767EB005353AA /* Images.xcassets */; };
 		08667A6C1AA767EB005353AA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08667A6A1AA767EB005353AA /* LaunchScreen.xib */; };
 		08667A781AA767EB005353AA /* WMPullRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 08667A771AA767EB005353AA /* WMPullRefreshTests.m */; };
+		08667A831AA76826005353AA /* WMPullRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08667A821AA76826005353AA /* WMPullRefreshView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		08667A711AA767EB005353AA /* WMPullRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMPullRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08667A761AA767EB005353AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08667A771AA767EB005353AA /* WMPullRefreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMPullRefreshTests.m; sourceTree = "<group>"; };
+		08667A811AA76826005353AA /* WMPullRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPullRefreshView.h; sourceTree = SOURCE_ROOT; };
+		08667A821AA76826005353AA /* WMPullRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPullRefreshView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 		08667A571AA767EB005353AA /* WMPullRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				08667A811AA76826005353AA /* WMPullRefreshView.h */,
+				08667A821AA76826005353AA /* WMPullRefreshView.m */,
 				08667A5C1AA767EB005353AA /* AppDelegate.h */,
 				08667A5D1AA767EB005353AA /* AppDelegate.m */,
 				08667A621AA767EB005353AA /* ViewController.h */,
@@ -226,6 +231,7 @@
 				08667A5B1AA767EB005353AA /* main.m in Sources */,
 				08667A641AA767EB005353AA /* ViewController.m in Sources */,
 				08667A611AA767EB005353AA /* WMPullRefresh.xcdatamodeld in Sources */,
+				08667A831AA76826005353AA /* WMPullRefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

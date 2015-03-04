@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WMPullRefreshView.h"
 
 @interface ViewController : UIViewController
 
