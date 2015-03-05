@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet WMPullRefreshView *mPullRefreshView;
+@property (weak, nonatomic) IBOutlet UIView *mSubView;
+
 
 @end
 
@@ -17,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [_mPullRefreshView.mScrollView addSubview:_mSubView];
 }
 
 - (void)didReceiveMemoryWarning {
