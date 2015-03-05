@@ -18,4 +18,14 @@
 
 @interface WMPullRefreshView : UIView <UIScrollViewDelegate>
 
+@property (nonatomic, strong) UIScrollView* mScrollView;
+
+@property (nonatomic, strong) UIView* pullView;
+
+@property (nonatomic, strong) UIView* pullHeadView;
+
+@property (nonatomic, strong) UILabel* statusLabel;
+
+@property (nonatomic, strong) UILabel* directLabel;
+
 @end
