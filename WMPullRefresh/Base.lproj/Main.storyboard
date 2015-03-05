@@ -16,49 +16,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgP-X1-U11">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgP-X1-U11">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQg-Rj-2j7">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-gc-OFA">
-                                                <rect key="frame" x="137" y="225" width="46" height="30"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="TQg-Rj-2j7" firstAttribute="leading" secondItem="KgP-X1-U11" secondAttribute="leading" id="9hr-4O-NFW"/>
-                                    <constraint firstItem="TQg-Rj-2j7" firstAttribute="centerX" secondItem="KgP-X1-U11" secondAttribute="centerX" id="VZZ-Ti-LWn"/>
-                                    <constraint firstAttribute="trailing" secondItem="TQg-Rj-2j7" secondAttribute="trailing" id="eej-FF-t7B"/>
-                                    <constraint firstItem="TQg-Rj-2j7" firstAttribute="top" secondItem="KgP-X1-U11" secondAttribute="top" id="kLQ-1t-upc"/>
-                                    <constraint firstItem="TQg-Rj-2j7" firstAttribute="centerY" secondItem="KgP-X1-U11" secondAttribute="centerY" id="niz-yZ-sfm"/>
-                                    <constraint firstAttribute="bottom" secondItem="TQg-Rj-2j7" secondAttribute="bottom" id="xhm-0G-ztN"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KgP-X1-U11" firstAttribute="leading" secondItem="jxP-bb-Xy8" secondAttribute="leading" id="4xK-8q-XWB"/>
-                            <constraint firstItem="KgP-X1-U11" firstAttribute="bottom" secondItem="9x4-a5-OL2" secondAttribute="top" id="9BG-vA-nAh"/>
-                            <constraint firstItem="KgP-X1-U11" firstAttribute="top" secondItem="jxP-bb-Xy8" secondAttribute="top" id="rCH-DC-ZDk"/>
-                            <constraint firstAttribute="trailing" secondItem="KgP-X1-U11" secondAttribute="trailing" id="y82-sI-I4S"/>
+                            <constraint firstAttribute="trailing" secondItem="KgP-X1-U11" secondAttribute="trailing" id="0n0-Ty-YmQ"/>
+                            <constraint firstItem="KgP-X1-U11" firstAttribute="top" secondItem="jxP-bb-Xy8" secondAttribute="top" id="I85-cu-1Vi"/>
+                            <constraint firstItem="9x4-a5-OL2" firstAttribute="top" secondItem="KgP-X1-U11" secondAttribute="bottom" id="Zfo-Za-98I"/>
+                            <constraint firstItem="KgP-X1-U11" firstAttribute="leading" secondItem="jxP-bb-Xy8" secondAttribute="leading" id="qk1-Id-Tyt"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mScrollView" destination="KgP-X1-U11" id="hS0-dJ-r2S"/>
-                        <outlet property="mainView" destination="TQg-Rj-2j7" id="Pbr-1K-X7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHg-I4-z1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="598" y="45"/>
+        </scene>
+        <!--Master View Controller-->
+        <scene sceneID="bNC-89-aKW">
+            <objects>
+                <viewController storyboardIdentifier="idMasterVC" id="Coc-I9-STq" customClass="WMMasterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VdI-tM-HZP"/>
+                        <viewControllerLayoutGuide type="bottom" id="cMa-z4-8vt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ua-w2-HsB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXd-gA-Ydf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="177" y="45"/>
+        </scene>
+        <!--Slaver View Controller-->
+        <scene sceneID="KPg-ks-dhN">
+            <objects>
+                <viewController storyboardIdentifier="idSlaverVC" id="nub-Yw-oIH" customClass="WMSlaverViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tMg-oN-Y6s"/>
+                        <viewControllerLayoutGuide type="bottom" id="yu7-sF-D2r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tGc-Bi-YG5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.015686274510000001" green="0.54117647059999996" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0IT-kF-kmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960" y="45"/>
         </scene>
     </scenes>
 </document>

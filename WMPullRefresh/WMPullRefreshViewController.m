@@ -14,7 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (strong, nonatomic) UIView *headView;
-@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (strong, nonatomic) WMMasterViewController* masterVC;
+@property (strong, nonatomic) WMSlaverViewController* slaverVC;
+
 
 @property (strong, nonatomic) UILabel* directLabel;
 @property (strong, nonatomic) UILabel* statusLabel;
@@ -24,15 +26,23 @@
 @end
 
 @implementation WMPullRefreshViewController
+static int width;
+static int height;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    width = [UIScreen mainScreen].bounds.size.width;
+    height = [UIScreen mainScreen].bounds.size.height;
+    
     _mScrollView.delegate = self;
     _isBegin = NO;
-    [self setupViewsHeadViewColor:[UIColor blackColor]];
+    [self setupViewsHeadViewColor:[UIColor redColor]];
+    [self setupMasterView];
+    [self setupSlaverView];
     [self setupRefreshViewsTextColor:[UIColor groupTableViewBackgroundColor]];
     [self setupAIView];
     [self setupSnowman];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,23 +51,34 @@
 }
 
 - (void)setupViewsHeadViewColor:(UIColor*)hvColor {
-    _mScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height);
+    _mScrollView.contentSize = CGSizeMake(width * 2, height);
+    _mScrollView.contentOffset = CGPointMake(0, 0);
     _headView = [[UIView alloc] init];
-    _headView.frame = CGRectMake(0, -self.view.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height * 3);
+    _headView.frame = CGRectMake(0, -height, width, height * 3);
     _headView.backgroundColor = hvColor;
     [_mScrollView addSubview:_headView];
-    _mainView.backgroundColor = [UIColor redColor];
-    [_mScrollView addSubview:_mainView];
+}
+
+- (void)setupMasterView {
+    _masterVC = [self.storyboard instantiateViewControllerWithIdentifier:@"idMasterVC"];
+    _masterVC.view.frame = CGRectMake(0, 0, width, height);
+    [_mScrollView addSubview:_masterVC.view];
+}
+
+- (void)setupSlaverView {
+    _slaverVC = [self.storyboard instantiateViewControllerWithIdentifier:@"idSlaverVC"];
+    _slaverVC.view.layer.frame = CGRectMake(width, 0, width, height);
+    [_mScrollView addSubview:_slaverVC.view];
 }
 
 - (void)setupRefreshViewsTextColor:(UIColor*)textColor {
-    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 180) / 2, self.view.bounds.size.height - 44, 180, 44)];
+    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake((width - 180) / 2, height - 44, 180, 44)];
     _statusLabel.textColor = textColor;
     _statusLabel.font = [UIFont systemFontOfSize:18];
-    _statusLabel.text = @"Pull to refresh";
+    _statusLabel.text = NSLocalizedString(@"pulltorefresh", @"");
     _statusLabel.textAlignment = NSTextAlignmentCenter;
     [_headView addSubview:_statusLabel];
-    _directLabel = [[UILabel alloc] initWithFrame:CGRectMake(_statusLabel.frame.origin.x - 44, self.view.bounds.size.height - 44, 44, 44)];
+    _directLabel = [[UILabel alloc] initWithFrame:CGRectMake(_statusLabel.frame.origin.x - 44, height - 44, 44, 44)];
     _directLabel.textColor = textColor;
     _directLabel.font = [UIFont systemFontOfSize:32];
     _directLabel.text = @"➟";
@@ -76,13 +97,13 @@
 }
 
 - (void)setupSnowman {
-    UILabel* snowman = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height / 2, 88, 88)];
+    UILabel* snowman = [[UILabel alloc] initWithFrame:CGRectMake(0, height / 2, 88, 88)];
     snowman.textColor = [UIColor groupTableViewBackgroundColor];
     snowman.text = @"☃";
     snowman.font = [UIFont systemFontOfSize:64];
     [_headView addSubview:snowman];
     
-    UILabel* snowmanSay = [[UILabel alloc] initWithFrame:CGRectMake(88, self.view.frame.size.height / 2, 200, 88)];
+    UILabel* snowmanSay = [[UILabel alloc] initWithFrame:CGRectMake(88, height / 2, 200, 88)];
     snowmanSay.textColor = [UIColor groupTableViewBackgroundColor];
     snowmanSay.text = @"Oops, I was found.";
     snowmanSay.font = [UIFont systemFontOfSize:17];
@@ -93,25 +114,30 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int yOffset = scrollView.contentOffset.y;
-    NSLog(@"%d", yOffset);
+    
     if (yOffset < -64) {
         if (!_isBegin) {
             _directLabel.transform = CGAffineTransformMakeRotation(-M_PI_2);
-            _statusLabel.text = @"Loosen for refresh";
+            _statusLabel.text = NSLocalizedString(@"releasetorefresh", @"");
             _isBegin = YES;
         }
     }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    int xOffset = scrollView.contentOffset.x;
     
+    CGPoint real = CGPointMake(width / 2 + xOffset, _headView.center.y);
+    _headView.center = real;
+
+    NSLog(@"x : %d, y : %d, \n x %f, y %f", xOffset, yOffset, _headView.center.x, _headView.center.y);
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     if (_isBegin) {
         [UIView animateWithDuration:0.2 animations:^ {
+            _mScrollView.pagingEnabled = NO;
+            _mScrollView.userInteractionEnabled = NO;
             _mScrollView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-            _statusLabel.text = @"Refreshing";
+            //            _mScrollView.center = CGPointMake(width / 2, height / 2 + 64);
+            _statusLabel.text = NSLocalizedString(@"refreshing", @"");
             _directLabel.hidden = YES;
             [_aiView startAnimating];
         } completion:^ (BOOL animated) {
@@ -132,7 +158,9 @@
         _mScrollView.contentInset = UIEdgeInsetsZero;
     } completion:^ (BOOL animated) {
         _directLabel.transform = CGAffineTransformMakeRotation(M_PI_2);
-        _statusLabel.text = @"Pull refreshing";
+        _statusLabel.text = NSLocalizedString(@"pulltorefresh", @"");
+        _mScrollView.pagingEnabled = YES;
+        _mScrollView.userInteractionEnabled = YES;
     }];
 }
 

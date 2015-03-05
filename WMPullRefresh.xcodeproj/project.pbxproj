@@ -14,6 +14,9 @@
 		08667A691AA767EB005353AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08667A681AA767EB005353AA /* Images.xcassets */; };
 		08667A6C1AA767EB005353AA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08667A6A1AA767EB005353AA /* LaunchScreen.xib */; };
 		08667A781AA767EB005353AA /* WMPullRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 08667A771AA767EB005353AA /* WMPullRefreshTests.m */; };
+		08667A861AA881C0005353AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08667A881AA881C0005353AA /* Localizable.strings */; };
+		08819F041AA8888C00202A94 /* WMSlaverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08819F031AA8888C00202A94 /* WMSlaverViewController.m */; };
+		08819F071AA8924300202A94 /* WMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08819F061AA8924300202A94 /* WMMasterViewController.m */; };
 		08EEE78A1AA84D820065FAEC /* WMPullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,12 @@
 		08667A711AA767EB005353AA /* WMPullRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMPullRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		08667A761AA767EB005353AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08667A771AA767EB005353AA /* WMPullRefreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMPullRefreshTests.m; sourceTree = "<group>"; };
+		08667A891AA881CE005353AA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		08667A8B1AA88442005353AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		08819F021AA8888C00202A94 /* WMSlaverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMSlaverViewController.h; sourceTree = "<group>"; };
+		08819F031AA8888C00202A94 /* WMSlaverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSlaverViewController.m; sourceTree = "<group>"; };
+		08819F051AA8924300202A94 /* WMMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMasterViewController.h; sourceTree = "<group>"; };
+		08819F061AA8924300202A94 /* WMMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMasterViewController.m; sourceTree = "<group>"; };
 		08EEE7881AA84D820065FAEC /* WMPullRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPullRefreshViewController.h; sourceTree = "<group>"; };
 		08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPullRefreshViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +94,10 @@
 			children = (
 				08EEE7881AA84D820065FAEC /* WMPullRefreshViewController.h */,
 				08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */,
+				08819F051AA8924300202A94 /* WMMasterViewController.h */,
+				08819F061AA8924300202A94 /* WMMasterViewController.m */,
+				08819F021AA8888C00202A94 /* WMSlaverViewController.h */,
+				08819F031AA8888C00202A94 /* WMSlaverViewController.m */,
 				08667A5C1AA767EB005353AA /* AppDelegate.h */,
 				08667A5D1AA767EB005353AA /* AppDelegate.m */,
 				08667A651AA767EB005353AA /* Main.storyboard */,
@@ -101,6 +114,7 @@
 			children = (
 				08667A591AA767EB005353AA /* Info.plist */,
 				08667A5A1AA767EB005353AA /* main.m */,
+				08667A881AA881C0005353AA /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -185,6 +199,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 08667A4C1AA767EB005353AA;
 			productRefGroup = 08667A561AA767EB005353AA /* Products */;
@@ -203,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08667A671AA767EB005353AA /* Main.storyboard in Resources */,
+				08667A861AA881C0005353AA /* Localizable.strings in Resources */,
 				08667A6C1AA767EB005353AA /* LaunchScreen.xib in Resources */,
 				08667A691AA767EB005353AA /* Images.xcassets in Resources */,
 			);
@@ -226,6 +242,8 @@
 				08667A5B1AA767EB005353AA /* main.m in Sources */,
 				08667A611AA767EB005353AA /* WMPullRefresh.xcdatamodeld in Sources */,
 				08EEE78A1AA84D820065FAEC /* WMPullRefreshViewController.m in Sources */,
+				08819F071AA8924300202A94 /* WMMasterViewController.m in Sources */,
+				08819F041AA8888C00202A94 /* WMSlaverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +280,15 @@
 				08667A6B1AA767EB005353AA /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		08667A881AA881C0005353AA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08667A891AA881CE005353AA /* zh-Hans */,
+				08667A8B1AA88442005353AA /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

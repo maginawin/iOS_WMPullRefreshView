@@ -7,17 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol WMPullRefreshViewControllerDelegate <NSObject>
-
-@required
-- (void)pullRefreshViewStart;
-
-@end
+#import "WMMasterViewController.h"
+#import "WMSlaverViewController.h"
 
 @interface WMPullRefreshViewController : UIViewController <UIScrollViewDelegate>
-
-@property (weak, nonatomic) id<WMPullRefreshViewControllerDelegate> delegate;
 
 - (void)pullRefreshViewEnd;
 
