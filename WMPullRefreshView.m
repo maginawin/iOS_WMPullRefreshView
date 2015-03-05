@@ -86,10 +86,18 @@
     [_pullHeadView addSubview:_directLabel];
 }
 
+- (void)pullRefreshViewEnd {
+
+}
+
 #pragma mark - UIScrollView delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
+    NSInteger yOffset = scrollView.contentOffset.y;
+    if (yOffset < -20) {
+        [_delegate pullRefreshViewBegin];
+        _directLabel.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

@@ -12,10 +12,14 @@
 
 @required
 
-- (void)pullRefreshViewBeginRefreshing;
+- (void)pullRefreshViewBegin;
 
 @end
 
 @interface WMPullRefreshView : UIView <UIScrollViewDelegate>
+
+@property (weak, nonatomic) id<WMPullRefreshViewDelegate> delegate;
+
+- (void)pullRefreshViewEnd;
 
 @end
