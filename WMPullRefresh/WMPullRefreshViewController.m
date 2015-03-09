@@ -116,16 +116,10 @@ static int height;
     [_headView addSubview:snowmanSay];
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch* temp = [touches anyObject];
-    NSLog(@"touches moved : y %f", [temp locationInView:_mScrollView].y);
-}
-
 #pragma mark - UIScrollView delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int yOffset = scrollView.contentOffset.y;
-    int xOffset = scrollView.contentOffset.x;
     if (yOffset != 0) {
         _mScrollView.contentOffset = CGPointMake(_pageX, yOffset);
     }
@@ -170,7 +164,6 @@ static int height;
     _pageX = scrollView.contentOffset.x;
     CGPoint real = CGPointMake(width / 2 + _pageX, _headView.center.y);
     _headView.center = real;
-    NSLog(@"page x : %f", _pageX);
 }
 
 #pragma mark -
