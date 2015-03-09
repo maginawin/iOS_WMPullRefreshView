@@ -7,6 +7,6 @@
 */
 
 "refreshing" = "正在同步";
-"pullrefresh" = "下拉同步";
+"pulltorefresh" = "下拉同步";
 "releasetorefresh" = "松开立即同步";
 "refreshcomplete" = "同步完成";

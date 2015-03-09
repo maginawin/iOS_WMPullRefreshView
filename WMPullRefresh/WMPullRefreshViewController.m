@@ -17,6 +17,8 @@
 @property (strong, nonatomic) WMMasterViewController* masterVC;
 @property (strong, nonatomic) WMSlaverViewController* slaverVC;
 
+@property (nonatomic) CGPoint beganPoint;
+@property (nonatomic) CGFloat pageX;
 
 @property (strong, nonatomic) UILabel* directLabel;
 @property (strong, nonatomic) UILabel* statusLabel;
@@ -36,7 +38,8 @@ static int height;
     
     _mScrollView.delegate = self;
     _isBegin = NO;
-    [self setupViewsHeadViewColor:[UIColor redColor]];
+    _beganPoint = CGPointZero;
+    [self setupViewsHeadViewColor:[UIColor clearColor]];
     [self setupMasterView];
     [self setupSlaverView];
     [self setupRefreshViewsTextColor:[UIColor groupTableViewBackgroundColor]];
@@ -51,8 +54,11 @@ static int height;
 }
 
 - (void)setupViewsHeadViewColor:(UIColor*)hvColor {
-    _mScrollView.contentSize = CGSizeMake(width * 2, height);
+    _mScrollView.contentSize = CGSizeMake(width * 2, 0);
     _mScrollView.contentOffset = CGPointMake(0, 0);
+    _mScrollView.bounces = YES;
+    _mScrollView.alwaysBounceVertical = YES;
+    _pageX = _mScrollView.contentOffset.x;
     _headView = [[UIView alloc] init];
     _headView.frame = CGRectMake(0, -height, width, height * 3);
     _headView.backgroundColor = hvColor;
@@ -110,24 +116,36 @@ static int height;
     [_headView addSubview:snowmanSay];
 }
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch* temp = [touches anyObject];
+    NSLog(@"touches moved : y %f", [temp locationInView:_mScrollView].y);
+}
+
 #pragma mark - UIScrollView delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     int yOffset = scrollView.contentOffset.y;
-    
-    if (yOffset < -64) {
+    int xOffset = scrollView.contentOffset.x;
+    if (yOffset != 0) {
+        _mScrollView.contentOffset = CGPointMake(_pageX, yOffset);
+    }
+    if (yOffset <= -84) {
         if (!_isBegin) {
-            _directLabel.transform = CGAffineTransformMakeRotation(-M_PI_2);
-            _statusLabel.text = NSLocalizedString(@"releasetorefresh", @"");
+            [UIView animateWithDuration:0.1 animations:^ {
+                _directLabel.transform = CGAffineTransformMakeRotation(3 * M_PI_2);
+                _statusLabel.text = NSLocalizedString(@"releasetorefresh", @"");
+            }];
             _isBegin = YES;
         }
+    } else {
+        if (_isBegin) {
+            [UIView animateWithDuration:0.1 animations:^ {
+                _directLabel.transform = CGAffineTransformMakeRotation(M_PI_2);
+                _statusLabel.text = NSLocalizedString(@"pulltorefresh", @"");
+            }];
+            _isBegin = NO;
+        }
     }
-    int xOffset = scrollView.contentOffset.x;
-    
-    CGPoint real = CGPointMake(width / 2 + xOffset, _headView.center.y);
-    _headView.center = real;
-
-    NSLog(@"x : %d, y : %d, \n x %f, y %f", xOffset, yOffset, _headView.center.x, _headView.center.y);
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
@@ -146,6 +164,13 @@ static int height;
             });
         }];
     }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    _pageX = scrollView.contentOffset.x;
+    CGPoint real = CGPointMake(width / 2 + _pageX, _headView.center.y);
+    _headView.center = real;
+    NSLog(@"page x : %f", _pageX);
 }
 
 #pragma mark -
