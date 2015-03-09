@@ -64,6 +64,17 @@ static int height;
     _headView.frame = CGRectMake(0, -height, width, height * 3);
     _headView.backgroundColor = hvColor;
     [_mScrollView addSubview:_headView];
+    [_mPageController addTarget:self action:@selector(handlePageControl:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)handlePageControl:(id)sender {
+    UIPageControl* temp = (UIPageControl*)sender;
+    [UIView animateWithDuration:0.2 animations:^ {
+        _mScrollView.contentOffset = CGPointMake(width * temp.currentPage, 0);
+    }];
+    _pageX = _mScrollView.contentOffset.x;
+    CGPoint real = CGPointMake(width / 2 + _pageX, _headView.center.y);
+    _headView.center = real;
 }
 
 - (void)setupMasterView {
