@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView* aiView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *mPageController;
 @property (strong, nonatomic) UIView *headView;
 @property (strong, nonatomic) WMMasterViewController* masterVC;
 @property (strong, nonatomic) WMSlaverViewController* slaverVC;
@@ -45,12 +46,12 @@ static int height;
     [self setupRefreshViewsTextColor:[UIColor groupTableViewBackgroundColor]];
     [self setupAIView];
     [self setupSnowman];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
 }
 
 - (void)setupViewsHeadViewColor:(UIColor*)hvColor {
@@ -78,11 +79,11 @@ static int height;
 }
 
 - (void)setupRefreshViewsTextColor:(UIColor*)textColor {
-    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake((width - 180) / 2, height - 44, 180, 44)];
+    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake( width / 2 - 22, height - 44, 180, 44)];
     _statusLabel.textColor = textColor;
-    _statusLabel.font = [UIFont systemFontOfSize:18];
+    _statusLabel.font = [UIFont systemFontOfSize:15];
     _statusLabel.text = NSLocalizedString(@"pulltorefresh", @"");
-    _statusLabel.textAlignment = NSTextAlignmentCenter;
+    _statusLabel.textAlignment = NSTextAlignmentLeft;
     [_headView addSubview:_statusLabel];
     _directLabel = [[UILabel alloc] initWithFrame:CGRectMake(_statusLabel.frame.origin.x - 44, height - 44, 44, 44)];
     _directLabel.textColor = textColor;
@@ -152,21 +153,27 @@ static int height;
             _statusLabel.text = NSLocalizedString(@"refreshing", @"");
             _directLabel.hidden = YES;
             [_aiView startAnimating];
+            [self pullRefreshViewStart];
         } completion:^ (BOOL animated) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self pullRefreshViewEnd];
-            });
+            
         }];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     _pageX = scrollView.contentOffset.x;
+    _mPageController.currentPage = _pageX / width;
     CGPoint real = CGPointMake(width / 2 + _pageX, _headView.center.y);
     _headView.center = real;
 }
 
-#pragma mark -
+#pragma mark - 处理刷新事件
+
+- (void)pullRefreshViewStart {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self pullRefreshViewEnd];
+    });
+}
 
 - (void)pullRefreshViewEnd {
     _isBegin = NO;

@@ -1,41 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yfE-jX-dgN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="avh-Re-v1h">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Pull Refresh View Controller-->
-        <scene sceneID="9Ah-fB-Utf">
-            <objects>
-                <viewController id="yfE-jX-dgN" customClass="WMPullRefreshViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ToL-g7-b8w"/>
-                        <viewControllerLayoutGuide type="bottom" id="9x4-a5-OL2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jxP-bb-Xy8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgP-X1-U11">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                            </scrollView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KgP-X1-U11" secondAttribute="trailing" id="0n0-Ty-YmQ"/>
-                            <constraint firstItem="KgP-X1-U11" firstAttribute="top" secondItem="jxP-bb-Xy8" secondAttribute="top" id="I85-cu-1Vi"/>
-                            <constraint firstItem="9x4-a5-OL2" firstAttribute="top" secondItem="KgP-X1-U11" secondAttribute="bottom" id="Zfo-Za-98I"/>
-                            <constraint firstItem="KgP-X1-U11" firstAttribute="leading" secondItem="jxP-bb-Xy8" secondAttribute="leading" id="qk1-Id-Tyt"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="mScrollView" destination="KgP-X1-U11" id="hS0-dJ-r2S"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yHg-I4-z1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="582" y="45"/>
-        </scene>
         <!--Master View Controller-->
         <scene sceneID="bNC-89-aKW">
             <objects>
@@ -73,6 +41,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0IT-kF-kmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1096" y="45"/>
+        </scene>
+        <!--Pull Refresh View Controller-->
+        <scene sceneID="JIz-dA-kxJ">
+            <objects>
+                <viewController storyboardIdentifier="idPullRefreshVC" id="avh-Re-v1h" customClass="WMPullRefreshViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Bc-gV-i4T"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWK-7U-G3b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qhq-tG-NjZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVa-g6-DoB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="gDq-Co-dXc">
+                                <rect key="frame" x="140" y="435" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="hcc-jy-GH7"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="gDq-Co-dXc" secondAttribute="centerX" id="BcJ-wJ-tNA"/>
+                            <constraint firstItem="eVa-g6-DoB" firstAttribute="top" secondItem="Qhq-tG-NjZ" secondAttribute="top" id="X7o-rN-wtA"/>
+                            <constraint firstItem="eVa-g6-DoB" firstAttribute="bottom" secondItem="gWK-7U-G3b" secondAttribute="top" id="Yez-jT-461"/>
+                            <constraint firstItem="gWK-7U-G3b" firstAttribute="top" secondItem="gDq-Co-dXc" secondAttribute="bottom" constant="8" id="c2a-Mq-hPJ"/>
+                            <constraint firstItem="eVa-g6-DoB" firstAttribute="leading" secondItem="Qhq-tG-NjZ" secondAttribute="leading" id="qgy-zX-da2"/>
+                            <constraint firstAttribute="trailing" secondItem="eVa-g6-DoB" secondAttribute="trailing" id="uvh-Vy-5YF"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mPageController" destination="gDq-Co-dXc" id="x36-Ad-All"/>
+                        <outlet property="mScrollView" destination="eVa-g6-DoB" id="PSZ-ko-DAS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMq-tq-J1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="512" y="45"/>
         </scene>
     </scenes>
 </document>
