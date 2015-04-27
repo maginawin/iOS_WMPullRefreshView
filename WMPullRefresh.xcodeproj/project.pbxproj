@@ -17,6 +17,8 @@
 		08667A861AA881C0005353AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08667A881AA881C0005353AA /* Localizable.strings */; };
 		08819F041AA8888C00202A94 /* WMSlaverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08819F031AA8888C00202A94 /* WMSlaverViewController.m */; };
 		08819F071AA8924300202A94 /* WMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08819F061AA8924300202A94 /* WMMasterViewController.m */; };
+		08A380971AEE673800B59EA4 /* WMNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A380961AEE673800B59EA4 /* WMNewViewController.m */; };
+		08A3809A1AEE674E00B59EA4 /* WMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A380991AEE674E00B59EA4 /* WMTableView.m */; };
 		08EEE78A1AA84D820065FAEC /* WMPullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,10 @@
 		08819F031AA8888C00202A94 /* WMSlaverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMSlaverViewController.m; sourceTree = "<group>"; };
 		08819F051AA8924300202A94 /* WMMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMasterViewController.h; sourceTree = "<group>"; };
 		08819F061AA8924300202A94 /* WMMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMMasterViewController.m; sourceTree = "<group>"; };
+		08A380951AEE673800B59EA4 /* WMNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMNewViewController.h; sourceTree = "<group>"; };
+		08A380961AEE673800B59EA4 /* WMNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMNewViewController.m; sourceTree = "<group>"; };
+		08A380981AEE674E00B59EA4 /* WMTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMTableView.h; sourceTree = "<group>"; };
+		08A380991AEE674E00B59EA4 /* WMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMTableView.m; sourceTree = "<group>"; };
 		08EEE7881AA84D820065FAEC /* WMPullRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPullRefreshViewController.h; sourceTree = "<group>"; };
 		08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPullRefreshViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,12 +98,8 @@
 		08667A571AA767EB005353AA /* WMPullRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				08EEE7881AA84D820065FAEC /* WMPullRefreshViewController.h */,
-				08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */,
-				08819F051AA8924300202A94 /* WMMasterViewController.h */,
-				08819F061AA8924300202A94 /* WMMasterViewController.m */,
-				08819F021AA8888C00202A94 /* WMSlaverViewController.h */,
-				08819F031AA8888C00202A94 /* WMSlaverViewController.m */,
+				08A380941AEE670900B59EA4 /* New */,
+				08A380931AEE66F900B59EA4 /* Old */,
 				08667A5C1AA767EB005353AA /* AppDelegate.h */,
 				08667A5D1AA767EB005353AA /* AppDelegate.m */,
 				08667A651AA767EB005353AA /* Main.storyboard */,
@@ -134,6 +136,30 @@
 				08667A761AA767EB005353AA /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		08A380931AEE66F900B59EA4 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				08EEE7881AA84D820065FAEC /* WMPullRefreshViewController.h */,
+				08EEE7891AA84D820065FAEC /* WMPullRefreshViewController.m */,
+				08819F051AA8924300202A94 /* WMMasterViewController.h */,
+				08819F061AA8924300202A94 /* WMMasterViewController.m */,
+				08819F021AA8888C00202A94 /* WMSlaverViewController.h */,
+				08819F031AA8888C00202A94 /* WMSlaverViewController.m */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
+		08A380941AEE670900B59EA4 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				08A380951AEE673800B59EA4 /* WMNewViewController.h */,
+				08A380961AEE673800B59EA4 /* WMNewViewController.m */,
+				08A380981AEE674E00B59EA4 /* WMTableView.h */,
+				08A380991AEE674E00B59EA4 /* WMTableView.m */,
+			);
+			name = New;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,9 +267,11 @@
 				08667A5E1AA767EB005353AA /* AppDelegate.m in Sources */,
 				08667A5B1AA767EB005353AA /* main.m in Sources */,
 				08667A611AA767EB005353AA /* WMPullRefresh.xcdatamodeld in Sources */,
+				08A380971AEE673800B59EA4 /* WMNewViewController.m in Sources */,
 				08EEE78A1AA84D820065FAEC /* WMPullRefreshViewController.m in Sources */,
 				08819F071AA8924300202A94 /* WMMasterViewController.m in Sources */,
 				08819F041AA8888C00202A94 /* WMSlaverViewController.m in Sources */,
+				08A3809A1AEE674E00B59EA4 /* WMTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
